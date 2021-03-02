@@ -10,6 +10,14 @@ public class Address {
     @Id
     @GeneratedValue
     private Long id;
-
+    
     private String address;
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "id=" + id +
+                ", address='" + address + '\'' +
+                '}';
+    }
 }
