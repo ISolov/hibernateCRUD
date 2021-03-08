@@ -16,34 +16,34 @@ public class Hibertest {
         ProjectController projectController = new ProjectController();
         AddressController addressController = new AddressController();
         EmployeeController employeeController = new EmployeeController();
-//        Department department = new Department();
-//        department.setAddress("Mohovaya street");
-//        departmentController.add(department);
-//
-//
-//
-//        Project project = new Project();
-//        project.setName("Main Project");
-//        projectController.add(project);
-//
-//
-//
-//        Address address = new Address();
-//        address.setAddress("Tverskaya street, 21");
-//        addressController.add(address);
-//
-//        Employee employee = new Employee();
-//        employee.setDepartment(department);
-//        employee.addProject(project);
-//        employee.setAddress(address);
-//        employee.setFIO("Ivanov");
-//        employeeController.add(employee);
-//        Employee employee2 = new Employee();
-//        employee2.setDepartment(department);
-//        employee2.addProject(project);
-//        employee2.setAddress(address);
-//        employee2.setFIO("Sidorov");
-//        employeeController.add(employee2);
+        Department department = new Department();
+        department.setAddress("Mohovaya street");
+        departmentController.add(department);
+
+
+
+        Project project = new Project();
+        project.setName("Main Project");
+        projectController.add(project);
+
+
+
+        Address address = new Address();
+        address.setAddress("Tverskaya street, 21");
+        addressController.add(address);
+
+        Employee employee = new Employee();
+        employee.setDepartment(department);
+        employee.addProject(project);
+        employee.setAddress(address);
+        employee.setFIO("Ivanov");
+        employeeController.add(employee);
+        Employee employee2 = new Employee();
+        employee2.setDepartment(department);
+        employee2.addProject(project);
+        employee2.setAddress(address);
+        employee2.setFIO("Sidorov");
+        employeeController.add(employee2);
         Employee emp = employeeController.getByFio("Ivanov");
         System.out.println(emp);
         Employee emp2 = employeeController.getById(5L);
