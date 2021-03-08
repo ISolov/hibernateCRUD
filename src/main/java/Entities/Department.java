@@ -17,16 +17,6 @@ public class Department {
     @OneToMany(mappedBy = "department",  cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Employee> employees = new ArrayList<>();
 
-    public void addEmployee(Employee employee){
-        this.employees.add(employee);
-        employee.setDepartment(this);
-    }
-
-    public void removeEmployee(Employee employee){
-        this.employees.remove(employee);
-        employee.setDepartment(null);
-    }
-
     public Long getId() {
         return id;
     }

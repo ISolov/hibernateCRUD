@@ -13,6 +13,7 @@ public class JPAUtil {
         return emf.createEntityManager();
     }
     public static void close(){
+        getEntityManager().close();
         emf.close();
     }
 }

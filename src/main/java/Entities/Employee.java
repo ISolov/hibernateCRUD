@@ -11,22 +11,19 @@ public class Employee {
     private Long id;
 
     @OneToOne
+    @JoinColumn(name = "address_id")
     private Address address;
 
     private String FIO;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="department_id")
+    @ManyToOne
     private Department department;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany( cascade = {CascadeType.MERGE})
     @JoinTable(name="employee_project",
-            joinColumns = {
-                @JoinColumn(name="employee_id")
-            },
-            inverseJoinColumns = {
-                @JoinColumn(name="project_id")
-    })
+            joinColumns = {@JoinColumn(name="employee_id")},
+            inverseJoinColumns = {@JoinColumn(name="project_id")}
+    )
     private List<Project> projects = new ArrayList<>();
 
     public Employee() {
@@ -40,6 +37,16 @@ public class Employee {
     public void removeProject(Project project){
         this.projects.remove(project);
         project.getEmployees().remove(this);
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+        department.getEmployees().add(this);
+    }
+
+    public void removeDepartment(Department department){
+        this.department = null;
+        department.getEmployees().remove(this);
     }
 
     public Long getId() {
@@ -70,10 +77,6 @@ public class Employee {
         return department;
     }
 
-    public void setDepartment(Department department) {
-        this.department = department;
-    }
-
     public List<Project> getProjects() {
         return projects;
     }
@@ -86,10 +89,10 @@ public class Employee {
     public String toString() {
         return "Employee{" +
                 "id=" + id +
-                ", address=" + address +
+                ", address=" + address.getAddress() +
                 ", FIO='" + FIO + '\'' +
-                ", department=" + department +
-                ", projects=" + projects +
+                ", department=" + department.getAddress() +
+                ", projects=" + projects.get(0).getName() +
                 '}';
     }
 }

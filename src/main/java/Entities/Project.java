@@ -10,24 +10,21 @@ public class Project {
     @GeneratedValue
     private Long id;
 
-    @Column
+    @Column()
     private String name;
-
-    @Column
-    private int version;
 
     @ManyToMany(mappedBy = "projects")
     private List<Employee> employees = new ArrayList<>();
 
 
-    public void addEmployee(Employee employee){
-        this.employees.add(employee);
-        employee.getProjects().add(this);
-    }
-    public void removeEmployee(Employee employee){
-        this.employees.remove(employee);
-        employee.getProjects().remove(this);
-    }
+//    public void addEmployee(Employee employee){
+//        this.employees.add(employee);
+//        employee.getProjects().add(this);
+//    }
+//    public void removeEmployee(Employee employee){
+//        this.employees.remove(employee);
+//        employee.getProjects().remove(this);
+//    }
 
     public Project() {
     }
@@ -48,13 +45,6 @@ public class Project {
         this.name = name;
     }
 
-    public int getVersion() {
-        return version;
-    }
-
-    public void setVersion(int version) {
-        this.version = version;
-    }
 
     public List<Employee> getEmployees() {
         return employees;
@@ -69,7 +59,6 @@ public class Project {
         return "Project{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", version=" + version +
                 ", employees=" + employees +
                 '}';
     }

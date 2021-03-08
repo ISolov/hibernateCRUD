@@ -1,4 +1,7 @@
 package Repositories;
 
-public interface ProjectRepository {
+import Entities.Project;
+
+public interface ProjectRepository extends Repository<Project>{
+    Project getByName(String name);
 }
